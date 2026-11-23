@@ -2,7 +2,7 @@
 
 An Android audiobook player for a Plex server, built for the car and for places with no signal. *Liber* is Latin for "book" (and "free"), *audīre* "to hear".
 
-Requires **Android 13 or newer**.
+Requires **Android 13 or newer**. Download the APK from the [Releases](https://github.com/Cd084/LiberAud-re/releases) page and open it on the phone; install updates the same way.
 
 ## Features
 
@@ -42,6 +42,10 @@ Requires **Android 13 or newer**.
   1. Open Android Auto's settings on the phone.
   2. Tap **Version** 10 times to enable developer mode.
   3. In the ⋮ menu, open **Developer settings** and turn on **Unknown sources**.
+
+## Releases
+
+Pushing a tag like `v0.2.0` makes GitHub build the signed APK and attach it to the release. Bump `versionName`/`versionCode` in `app/build.gradle.kts` and add a `CHANGELOG.md` entry first.
 
 ## Building
 

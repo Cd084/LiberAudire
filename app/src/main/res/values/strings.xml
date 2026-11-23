@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LiberAudīre</string>
+    <string name="download_channel">Downloads</string>
+    <string name="download_channel_description">Audiobooks downloading for offline listening</string>
+</resources>

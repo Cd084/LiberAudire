@@ -125,7 +125,7 @@ fun SettingsScreen(vm: AppViewModel, nav: NavHostController) {
                 color = Color(0xFFA9B2C3),
                 modifier = Modifier.padding(top = 4.dp),
             )
-            TextButton({ vm.openInBrowser("https://github.com/Cd084/LiberAud-re") }) { Text("Source code and licence") }
+            TextButton({ vm.openInBrowser("https://github.com/Cd084/LiberAudire") }) { Text("Source code and licence") }
         }
     }
 

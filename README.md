@@ -16,7 +16,7 @@ LiberAudīre is an independent, free project. It is not affiliated with or endor
 ## Install
 
 1. Requires **Android 13 or newer**.
-2. Download the latest `LiberAudire-x.y.z.apk` from the [Releases](https://github.com/Cd084/LiberAud-re/releases) page.
+2. Download the latest `LiberAudire-x.y.z.apk` from the [Releases](https://github.com/Cd084/LiberAudire/releases) page.
 3. Open it on your phone. Android will ask you to allow installing apps from your browser or file manager.
 4. Install updates the same way; your downloads and progress are kept.
 
@@ -99,7 +99,7 @@ Developer mode in Android Auto only adds a menu; it doesn't change how anything 
 
 ## Problems and ideas
 
-Please [open an issue](https://github.com/Cd084/LiberAud-re/issues). Include:
+Please [open an issue](https://github.com/Cd084/LiberAudire/issues). Include:
 - your phone and Android version;
 - what you did, what you expected, and what happened instead.
 

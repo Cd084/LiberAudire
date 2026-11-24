@@ -9,6 +9,10 @@ An Android audiobook player for your own Plex server, built for the car and for 
 
 LiberAudīre is an independent, free project. It is not affiliated with or endorsed by Plex.
 
+| Library | Player | Hold to skip a custom amount | Offline settings |
+|---|---|---|---|
+| <img src="docs/screenshots/home.png" width="200" alt="Library"> | <img src="docs/screenshots/player.png" width="200" alt="Player"> | <img src="docs/screenshots/skip.png" width="200" alt="Custom skip"> | <img src="docs/screenshots/settings.png" width="200" alt="Offline settings"> |
+
 ## Install
 
 1. Requires **Android 13 or newer**.
@@ -64,10 +68,23 @@ LiberAudīre reads audiobooks from a Plex **Music** library:
 **Android Auto**
 - Browse Continue listening, Downloaded, Recently added and Authors on the car screen, with your skip amounts as buttons.
 - Android Auto doesn't allow typing while driving, so custom skips are phone-only.
-- **Android Auto hides apps that weren't installed from the Play Store.** To show LiberAudīre:
-  1. Open Android Auto's settings on the phone.
-  2. Tap **Version** 10 times to enable developer mode.
-  3. In the ⋮ menu, open **Developer settings** and turn on **Unknown sources**.
+- Android Auto needs a one-time setting before LiberAudīre appears; see [Android Auto setup](#android-auto-setup).
+
+## Android Auto setup
+
+Android Auto only shows apps installed from the Play Store, unless you allow "unknown sources". You only need to do this once, on the phone:
+
+1. **Open Android Auto's settings.** On most phones this is in **Settings → Connected devices → Connection preferences → Android Auto**. You can also search Settings for "Android Auto". On older phones, open the Android Auto app.
+2. **Turn on developer mode.** Scroll to the bottom and tap **Version** (sometimes "Version and permission info") about 10 times, until a dialog asks whether to allow development settings. Tap **OK**.
+3. **Allow unknown sources.** Open the **⋮** menu at the top right, then **Developer settings**. Scroll down and tick **Unknown sources**.
+4. **Reconnect to the car.** Unplug the phone and plug it back in, or turn the car off and on. LiberAudīre then appears with the other media apps.
+
+If it still doesn't show:
+- In Android Auto's settings, open **Customise launcher** and make sure LiberAudīre is ticked.
+- Restart the phone.
+- Open LiberAudīre on the phone once and sign in before connecting.
+
+Developer mode in Android Auto only adds a menu; it doesn't change how anything else works. Android Auto updates sometimes switch **Unknown sources** back off. If LiberAudīre disappears from the car, tick it again.
 
 ## Privacy
 
@@ -79,7 +96,6 @@ LiberAudīre reads audiobooks from a Plex **Music** library:
 
 - **Single-file books show as one chapter.** Plex doesn't pass on the chapter marks inside `.m4b` files yet; reading them directly is planned. Skipping, bookmarks and resuming all work normally.
 - **No sleep timer yet.**
-- **Android Auto hasn't been tested much yet.** Bug reports are welcome.
 
 ## Problems and ideas
 

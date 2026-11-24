@@ -1,8 +1,34 @@
 # LiberAudīre
 
-An Android audiobook player for a Plex server, built for the car and for places with no signal. *Liber* is Latin for "book" (and "free"), *audīre* "to hear".
+An Android audiobook player for your own Plex server, built for the car and for places with no signal. *Liber* is Latin for "book" (and "free"), *audīre* "to hear".
 
-Requires **Android 13 or newer**. Download the APK from the [Releases](https://github.com/Cd084/LiberAud-re/releases) page and open it on the phone; install updates the same way.
+- Plays the audiobooks on a Plex server you own or that is shared with you.
+- Works in **Android Auto**.
+- Keeps listening going **without signal**: it caches ahead while streaming, downloads whole books automatically, and lets you download books in advance.
+- **Progress syncs with Plex**, so you can switch between LiberAudīre and other Plex apps.
+
+LiberAudīre is an independent, free project. It is not affiliated with or endorsed by Plex.
+
+## Install
+
+1. Requires **Android 13 or newer**.
+2. Download the latest `LiberAudire-x.y.z.apk` from the [Releases](https://github.com/Cd084/LiberAud-re/releases) page.
+3. Open it on your phone. Android will ask you to allow installing apps from your browser or file manager.
+4. Install updates the same way; your downloads and progress are kept.
+
+## What you need on the Plex side
+
+LiberAudīre reads audiobooks from a Plex **Music** library:
+
+| Plex | LiberAudīre |
+|---|---|
+| Artist | Author |
+| Album | Book |
+| Track | Chapter (one audio file) |
+
+- Books in one file (such as `.m4b`) and books split into many files both work.
+- A library set up the common way for audiobooks in Plex works as it is: Music type, with the album artist as the author.
+- To listen away from home, your server needs **Remote Access**, or the server owner's relay must be available.
 
 ## Features
 
@@ -12,16 +38,16 @@ Requires **Android 13 or newer**. Download the APK from the [Releases](https://g
 - Uses the best address for where you are: the home address on Wi-Fi, the remote one on mobile data. It switches automatically, even mid-book.
 - **Progress syncs with Plex**, so other Plex apps resume where you left off. Progress made offline is sent when you're back online.
   - Plex itself doesn't store positions within the first minute of a file. LiberAudīre keeps those on the phone.
-- Plays show up in the Plex Dashboard and Tautulli as "LiberAudire".
+- LiberAudīre identifies itself to Plex as "LiberAudire", for example in the device list.
 
 **Library**
 - Tabs for Continue listening, Recently added, Authors, Downloaded and All books, plus search.
-- Each book page shows the length, size, progress, chapters (files) and bookmarks.
+- Each book page shows the length, size, progress, chapters and bookmarks.
 - Browsing works offline for books you've opened before; downloaded books are always available.
 
 **Player**
 - **−30 / +30** on a tap. **Hold either one to skip a custom amount**: quick choices from 1 to 30 minutes, or type minutes and seconds. The last custom amount is remembered.
-  - Skipping crosses chapter (file) boundaries.
+  - The tap amounts can be changed in Settings. Skipping crosses from one file to the next.
 - Previous and next chapter, and a chapter scrubber.
 - Speed from 0.5× to 3×, remembered for each book.
 - Bookmarks.
@@ -38,25 +64,39 @@ Requires **Android 13 or newer**. Download the APK from the [Releases](https://g
 **Android Auto**
 - Browse Continue listening, Downloaded, Recently added and Authors on the car screen, with your skip amounts as buttons.
 - Android Auto doesn't allow typing while driving, so custom skips are phone-only.
-- **Sideloaded apps are hidden in Android Auto by default.** To show LiberAudīre:
+- **Android Auto hides apps that weren't installed from the Play Store.** To show LiberAudīre:
   1. Open Android Auto's settings on the phone.
   2. Tap **Version** 10 times to enable developer mode.
   3. In the ⋮ menu, open **Developer settings** and turn on **Unknown sources**.
 
-## Releases
+## Privacy
 
-Pushing a tag like `v0.2.0` makes GitHub build the signed APK and attach it to the release. Bump `versionName`/`versionCode` in `app/build.gradle.kts` and add a `CHANGELOG.md` entry first.
+- LiberAudīre talks only to **plex.tv**, for sign-in and finding your servers, and to **your Plex server**.
+- There are no ads, no analytics and no tracking.
+- Your Plex sign-in, progress, bookmarks and downloads stay on the phone and on your Plex server.
+
+## Known limitations
+
+- **Single-file books show as one chapter.** Plex doesn't pass on the chapter marks inside `.m4b` files yet; reading them directly is planned. Skipping, bookmarks and resuming all work normally.
+- **No sleep timer yet.**
+- **Android Auto hasn't been tested much yet.** Bug reports are welcome.
+
+## Problems and ideas
+
+Please [open an issue](https://github.com/Cd084/LiberAud-re/issues). Include:
+- your phone and Android version;
+- what you did, what you expected, and what happened instead.
 
 ## Building
 
-You need JDK 17+ and the Android SDK with platform 37.1:
+You need JDK 17 or newer, and the Android SDK with platform 37.1:
 
-```powershell
-.\gradlew.bat assembleDebug      # app\build\outputs\apk\debug\app-debug.apk
-.\gradlew.bat assembleRelease    # signed with the key in key.properties (see app\build.gradle.kts)
+```sh
+./gradlew assembleDebug      # app/build/outputs/apk/debug/app-debug.apk
+./gradlew assembleRelease    # signed with the key named in key.properties, otherwise the debug key
 ```
 
-## Project layout
+`key.properties` (not in git) holds `storeFile`, `storePassword`, `keyAlias` and `keyPassword` for your own signing key.
 
 | Path | Purpose |
 |---|---|
@@ -67,3 +107,11 @@ You need JDK 17+ and the Android SDK with platform 37.1:
 | `playback/Downloads.kt` | Book downloads, waiting for Wi-Fi, storage limit, clean-up |
 | `data/` | Settings, progress, bookmarks, download list, saved book details |
 | `ui/` | Screens (Jetpack Compose) |
+
+**Releases (maintainer):** bump `versionName`/`versionCode` in `app/build.gradle.kts`, add a `CHANGELOG.md` entry, then push a tag such as `v0.2.0`. GitHub Actions builds the signed APK and attaches it to the release.
+
+## Licence
+
+Copyright © 2026 Cd084.
+
+LiberAudīre is free software: you can share and change it under the terms of the [GNU General Public License v3.0](LICENSE). If you distribute a modified version, you must make its source code available under the same licence. It comes with no warranty.

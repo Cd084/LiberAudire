@@ -37,6 +37,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -113,7 +114,18 @@ fun SettingsScreen(vm: AppViewModel, nav: NavHostController) {
             }) { Text("Clear streaming cache") }
 
             SectionTitle("About")
-            Text("LiberAudīre 0.1.0", color = Color(0xFFA9B2C3))
+            val ctx = LocalContext.current
+            val version = remember { ctx.packageManager.getPackageInfo(ctx.packageName, 0).versionName }
+            Text("LiberAudīre $version", color = Color(0xFFA9B2C3))
+            Text(
+                "Copyright © 2026 Cd084. Free software under the GNU General Public License v3: " +
+                    "you may share and change it under that licence's terms. It comes with no warranty. " +
+                    "Not affiliated with or endorsed by Plex.",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0xFFA9B2C3),
+                modifier = Modifier.padding(top = 4.dp),
+            )
+            TextButton({ vm.openInBrowser("https://github.com/Cd084/LiberAud-re") }) { Text("Source code and licence") }
         }
     }
 

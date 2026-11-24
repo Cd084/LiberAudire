@@ -247,7 +247,7 @@ class PlexTv(private val http: OkHttpClient, private val clientId: String) {
 fun plexHeaders(clientId: String) = mapOf(
     "Accept" to "application/json",
     "X-Plex-Product" to "LiberAudire",
-    "X-Plex-Version" to "0.1.0",
+    "X-Plex-Version" to ca.liberaudire.BuildConfig.VERSION_NAME,
     "X-Plex-Client-Identifier" to clientId,
     "X-Plex-Platform" to "Android",
     "X-Plex-Device-Name" to "LiberAudire (${android.os.Build.MODEL})",

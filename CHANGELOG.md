@@ -2,6 +2,11 @@
 
 LiberAudīre's version is `versionName` / `versionCode` in `app/build.gradle.kts`. Each release gets a git tag `vX.Y.Z`; GitHub then builds the signed APK and attaches it to the release.
 
+## 0.1.1 — 2026-11-24
+
+- Settings → About shows the version, the GPL-3.0 licence notice and a link to the source code.
+- LiberAudīre now reports its real version to Plex.
+
 ## 0.1.0 — 2026-11-23
 
 The first version.
